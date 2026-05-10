@@ -1058,11 +1058,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.2rem 24
         </div>
       </div>
       <div class="rv d2">
-        <form id="cForm">
+        <form id="cForm" action="https://formspree.io/f/xvzlvvbr" method="POST">
           <div class="fg">
-            <div class="ff"><label data-en="Name" data-zh="姓名">Name</label><input type="text" data-ph-en="Jane Smith" data-ph-zh="张三" placeholder="Jane Smith"></div>
-            <div class="ff"><label data-en="Email" data-zh="邮箱">Email</label><input type="email" placeholder="hello@example.com"></div>
-            <div class="ff"><label data-en="Message" data-zh="留言">Message</label><textarea rows="5" data-ph-en="Tell me about your project or role..." data-ph-zh="告诉我你的项目或职位..." placeholder="Tell me about your project or role..."></textarea></div>
+            <div class="ff"><label data-en="Name" data-zh="姓名">Name</label><input type="text" name="name" data-ph-en="Jane Smith" data-ph-zh="张三" placeholder="Jane Smith" required></div>
+            <div class="ff"><label data-en="Email" data-zh="邮箱">Email</label><input type="email" name="email" placeholder="hello@example.com" required></div>
+            <div class="ff"><label data-en="Message" data-zh="留言">Message</label><textarea name="message" rows="5" data-ph-en="Tell me about your project or role..." data-ph-zh="告诉我你的项目或职位..." placeholder="Tell me about your project or role..." required></textarea></div>
           </div>
           <button type="submit" class="f-sub" data-en="Send Message →" data-zh="发送消息 →">Send Message →</button>
           <div class="f-ok" id="fOk" data-en="✓ Sent — I'll be in touch within 24 hours." data-zh="✓ 已发送，将在24小时内回复。">✓ Sent — I'll be in touch within 24 hours.</div>
@@ -1117,13 +1117,8 @@ document.querySelectorAll('.edu-cw').forEach(d=>{
 });
 
 /* Form */
-document.getElementById('cForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  const ok=document.getElementById('fOk');
-  ok.textContent=ok.getAttribute('data-'+lang);ok.style.display='block';
-  this.querySelectorAll('input,textarea').forEach(el=>el.value='');
-  setTimeout(()=>ok.style.display='none',6000);
-});
+// Formspree handles submission, no extra JS needed unless we want AJAX
+// If you want AJAX, you can keep this, but for simplicity, standard POST works best.
 </script>
 </body>
 </html>
